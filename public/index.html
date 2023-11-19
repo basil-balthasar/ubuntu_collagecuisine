@@ -72,12 +72,11 @@
         let imageUrl =
           "https://raw.githubusercontent.com/basil-balthasar/ubuntu_collagecuisine/main/public/History/SavedImages/" +
           recentImageName;
-          console.log(imageUrl)
 
         function generateQRCode() {
           const qrcode = new QRCode(qrcodeDiv, {
-            //text: imageLink,
-            text: imageUrl,
+            text: "https://youtube.com",
+            //text: imageUrl,
             width: 400,
             height: 400,
             colorDark: "#000000",
