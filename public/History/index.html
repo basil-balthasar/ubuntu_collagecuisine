@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recent Image</title>
+    <script src="history.js"></script>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+      img {
+        max-width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <img id="recentImage" src="" alt="recent image" />
+    <script>
+      let timerInSeconds = 0;
+      let recentImage = localStorage.getItem("recentImageName");
+      let imageItem = document.getElementById("recentImage");
+
+      imageItem.src = "./SavedImages/" + recentImage;
+
+      setInterval(() => {
+        timerInSeconds += 1;
+
+        if (timerInSeconds >= 3) {
+          window.location.reload();
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
