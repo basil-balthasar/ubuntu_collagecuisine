@@ -1,3 +1,5 @@
+bool lastState = false;
+
 void setup() {
   pinMode(0, INPUT_PULLUP);
   pinMode(1, INPUT_PULLUP);
@@ -36,6 +38,12 @@ void setup() {
 }
 
 void loop() {
+  if(digitalRead(32)==lastState){
+    delay(50);
+    lastState != digitalRead(32);
+  }
+
+
   String serial =
   String(digitalRead(0))+","+
   String(digitalRead(1))+","+
