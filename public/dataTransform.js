@@ -59,10 +59,12 @@ function getData(data){
         myBackground.position[1] = constrain(myBackground.position[1], 0, myBackground.image.height-myBackground.image.height/myBackground.scale)
     }else myBackground.isOn = false;
 
-    if(lastBackgroundState!=myBackground.isOn && myBackground.isOn == false){
+    if(lastBackgroundState==false && myBackground.isOn == false){
         backgroundColor = [random(50, 255), random(60, 255), random(40, 255)]
-        lastBackgroundState = myBackground.isOn
+        lastBackgroundState = true
         console.log(backgroundColor)
+    }else if(myBackground.isOn == true){
+        lastBackgroundState = false
     }
     
 
