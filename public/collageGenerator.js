@@ -27,18 +27,16 @@ function setup(){
     layerThree = new ImageObject(false, layerThreeImages[0], [0,0], 1, 0)
 }
 
-function windowResized() {
-  cnv.position(windowWidth/2-cnvX/2, windowHeight/2-cnvY/2)
-}
 
 function draw(){
   clear()
   //background
   if(myBackground.isOn == true){
-    image(myBackground.image, 0, 0, width, height, myBackground.position[0], myBackground.position[1], myBackground.image.height/myBackground.scale/16*9, myBackground.image.height/myBackground.scale, COVER, CENTER, CENTER)
+    //console.log(myBackground.position[0] + " ¦ " + myBackground.image.width*myBackground.scale/myBackground.image.height/ar)
+    image(myBackground.image, 0, 0, width, height, myBackground.position[0], myBackground.position[1], myBackground.image.height/myBackground.scale/width*height, myBackground.image.height/myBackground.scale, COVER, CENTER, CENTER)
     //image(myBackground.image, 0, 0, width, height, myBackground.position[0], myBackground.position[1], myBackground.image.width/myBackground.scale, myBackground.image.width/myBackground.scale*myBackground.ar, COVER, LEFT, TOP)
   }else{
-    //background(backgroundColor, 255)
+    background(backgroundColor, 255)
   }
   
     for(let l = 0; l < layerZOrder.length; l++){

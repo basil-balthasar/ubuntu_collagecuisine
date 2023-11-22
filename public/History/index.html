@@ -4,8 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recent Image</title>
-    <script src="history.js"></script>
-    <script src="../dataTransform.js"></script>
 
     <style>
       body {
@@ -20,20 +18,30 @@
   <body>
     <img id="recentImage" src="" alt="recent image" />
     <script>
+
+      fetch("../filename.json")
+      .then(response => response.json())
+      .then(data => setFileName(data))
+      .catch(error => console.error("Error loading data: ", error))
+
+      
       let timerInSeconds = 0;
       //let recentImage = localStorage.getItem("recentImageName");
 
       let imageItem = document.getElementById("recentImage");
-      console.log(fileName)
-      imageItem.src = "./SavedImages/" + fileName + ".png";
+      
 
       setInterval(() => {
         timerInSeconds += 1;
 
-        if (timerInSeconds >= 3) {
+        if (timerInSeconds >= 10) {
           window.location.reload();
         }
       }, 1000);
+
+      function setFileName(data){
+        imageItem.src = "./SavedImages/" + data.filename;
+      }
     </script>
   </body>
 </html>
