@@ -17,7 +17,7 @@ let lastFrame = 0
 
 let ar
 
-//let fileName
+let fileName
 
 let qrScriptLoaded = false
 
