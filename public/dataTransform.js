@@ -156,6 +156,7 @@ function saveCollage(){
     nf(currentSecond, 2);
     
     saveCanvas(fileName, "png")
+    console.log(fileName)
     localStorage.setItem("recentImageName", fileName+".png")
     if(qrScriptLoaded == true){
         showQRCode()
