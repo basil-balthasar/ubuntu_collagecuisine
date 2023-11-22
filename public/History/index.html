@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recent Image</title>
     <script src="history.js"></script>
+    <script src="../dataTransform.js"></script>
+
     <style>
       body {
         margin: 0px;
@@ -22,7 +24,7 @@
       let recentImage = localStorage.getItem("recentImageName");
       let imageItem = document.getElementById("recentImage");
 
-      imageItem.src = "./SavedImages/" + recentImage;
+      imageItem.src = "./SavedImages/" + fileName + ".png";
 
       setInterval(() => {
         timerInSeconds += 1;
