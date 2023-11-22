@@ -86,7 +86,7 @@ function getData(data){
         layerOne.image = layerOneImages[round(map(values[31], 0, 1023, 0, layerOneImages.length-1))]
         let layerOneJoystick = [values[5], values[8], values[7], values[6]]
         joystickToPosition(layerOneJoystick, layerOne.position)
-        layerOne.scale = map(values[30], 0, 1023, 0.1, 0.5)
+        layerOne.scale = map(values[30], 0, 1023, 0.3, 1)
         layerOne.rotation = map(values[29], 0, 1023, 0, 360)
 
         if (values[15] == 1 && values[16] == 1 && values[17] == 1) {
@@ -106,7 +106,7 @@ function getData(data){
         layerTwo.image = layerTwoImages[round(map(values[33], 0, 1023, 0, layerTwoImages.length-1))]
         let layerTwoJoystick = [values[4], values[2], values[0], values[1]]
         joystickToPosition(layerTwoJoystick, layerTwo.position)
-        layerTwo.scale = map(values[34], 0, 1023, 0.1, 0.5)
+        layerTwo.scale = map(values[34], 0, 1023, 0.3, 1)
         layerTwo.rotation = map(values[32], 0, 1023, 0, 360)
         if (values[28] == 1 && values[26] == 1 && values[25] == 1) {
             layerTwo.blendMode = blendModes[0]
