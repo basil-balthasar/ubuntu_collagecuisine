@@ -21,6 +21,8 @@ let fileName
 
 let qrScriptLoaded = false
 
+let isFirstSave = true
+
 //get data from io sockets
 function getData(data){
     const values = data.split(",")
@@ -126,7 +128,10 @@ function getData(data){
     const currentFrame = values[19];
 
     if (lastFrame != currentFrame) {
-        saveCollage()
+        if(isFirstSave == false){
+            saveCollage()
+        }
+        isFirstSave = false
     }
     lastFrame = currentFrame;
 }
