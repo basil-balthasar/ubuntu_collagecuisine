@@ -3,45 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Recent Image</title>
-
-    <style>
-      body {
-        margin: 0px;
-        padding: 0px;
-      }
-      img {
-        max-width: 100%;
-      }
-    </style>
   </head>
-  <body style="background-color: black">
-    <!-- <img id="recentImage" src="" alt="recent image" />
+  <body style="margin: 0px; overflow: hidden;">
+    <img style="height: 100vh; overflow: hidden;" id="recentImage" src="" alt="Recent Image" />
+
     <script>
+      const imageExtension = "png";
 
-      fetch("../filename.json")
-      .then(response => response.json())
-      .then(data => setFileName(data))
-      .catch(error => console.error("Error loading data: ", error))
+      function updateImage() {
+        fetch(
+          `https://api.github.com/repos/basil-balthasar/ubuntu_collagecuisine/contents/public/History/SavedImages`
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            const images = data.filter((item) =>
+              item.name.endsWith(`.${imageExtension}`)
+            );
+            if (images.length > 0) {
+              // Get a random image URL
+              const randomIndex = Math.floor(Math.random() * images.length);
+              const randomImage = images[randomIndex];
+              const imageUrl = randomImage.download_url;
 
-      
-      let timerInSeconds = 0;
-      //let recentImage = localStorage.getItem("recentImageName");
-
-      let imageItem = document.getElementById("recentImage");
-      
-
-      setInterval(() => {
-        timerInSeconds += 1;
-
-        if (timerInSeconds >= 10) {
-          window.location.reload();
-        }
-      }, 1000);
-
-      function setFileName(data){
-        imageItem.src = "./SavedImages/" + data.filename;
+              // Set the image source
+              const imgElement = document.getElementById("recentImage");
+              imgElement.src = imageUrl;
+            }
+          })
+          .catch((error) =>
+            console.error("Error displaying random image from GitHub:", error)
+          );
       }
-    </script> -->
+
+      // Update the image every 10 seconds
+      setInterval(updateImage, 10000);
+
+      // Initial image update
+      updateImage();
+    </script>
   </body>
 </html>
