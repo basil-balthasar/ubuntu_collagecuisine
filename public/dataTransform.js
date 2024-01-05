@@ -21,7 +21,7 @@ let fileName
 
 let qrScriptLoaded = false
 
-let isFirstSave = true
+let isFirstData = true
 
 //get data from io sockets
 function getData(data){
@@ -127,13 +127,16 @@ function getData(data){
     let collageNumber = 0;
     const currentFrame = values[19];
 
+    if(isFirstData){
+        lastFrame = currentFrame
+    }
+
     if (lastFrame != currentFrame) {
-        if(isFirstSave == false){
-            saveCollage()
-        }
-        isFirstSave = false
+        saveCollage()
     }
     lastFrame = currentFrame;
+
+    isFirstData = false
 }
 
 function joystickToPosition(joystick, position){
